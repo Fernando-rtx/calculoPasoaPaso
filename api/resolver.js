@@ -1,4 +1,4 @@
-// api/resolver.js
+// api/resolver.js (Versión Corregida)
 
 export default async function handler(request, response) {
   // Solo permitir peticiones POST
@@ -17,14 +17,13 @@ export default async function handler(request, response) {
     // 2. Usamos la clave de API guardada de forma segura en Vercel.
     const apiKey = process.env.WOLFRAM_API_KEY;
 
-    // 3. Construimos la URL para la API de Wolfram|Alpha.
-    const url = `https://api.wolframalpha.com/v2/query?input=<span class="math-inline">\{encodeURIComponent\(problema\)\}&appid\=</span>{apiKey}&output=JSON&includepodid=Result&includepodid=Step-by-step+solution`;
+    // 3. Construimos la URL para la API de Wolfram|Alpha (¡ESTA ES LA LÍNEA CORREGIDA!)
+    const url = `https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(problema)}&appid=${apiKey}&output=JSON&includepodid=Result&includepodid=Step-by-step+solution`;
 
     // 4. Hacemos la llamada desde el servidor de Vercel a Wolfram|Alpha.
     const wolframResponse = await fetch(url);
     const data = await wolframResponse.json();
-    // ¡¡AÑADE ESTA LÍNEA PARA DEPURAR!!
-    console.log('Respuesta de Wolfram|Alpha:', JSON.stringify(data, null, 2));
+
     // 5. Devolvemos la respuesta al frontend (a tu index.html).
     response.status(200).json(data);
 
