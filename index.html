@@ -3,24 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Mundo</title>
+    <title>Cálculo Paso a Paso - UES FMOcc</title>
     <style>
+        /* --- Estilos Generales --- */
+        :root {
+            --color-primario: #003366; /* Azul UES institucional */
+            --color-secundario: #f4f4f4;
+            --color-texto: #333;
+            --color-blanco: #ffffff;
+            --sombra-caja: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            background-color: #f0f2f5;
-            font-family: sans-serif;
+            background-color: var(--color-secundario);
+            color: var(--color-texto);
+            line-height: 1.6;
         }
-        h1 {
-            color: #333;
-            font-size: 3rem;
+
+        /* --- Encabezado --- */
+        header {
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid #d4a404; /* Detalle dorado/amarillo */
         }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            max-width: 800px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+        }
+
+        /* --- Contenedor Principal --- */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* --- Secciones --- */
+        section {
+            background-color: var(--color-blanco);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra-caja);
+        }
+
+        h2 {
+            color: var(--color-primario);
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        /* --- Sección de Descargas --- */
+        .guias-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .guia-card {
+            background-color: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .guia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .guia-card h3 {
+            margin-top: 0;
+            color: var(--color-primario);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+            padding: 0.8rem 1.5rem;
+            margin-top: 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn.resuelto {
+            background-color: #28a745; /* Verde para los resueltos */
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* --- Sección Paso a Paso --- */
+        .selector-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .selector-container label {
+            font-weight: bold;
+        }
+
+        .selector-container select,
+        .selector-container input,
+        .selector-container button {
+            padding: 0.7rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        
+        .selector-container button {
+            background-color: #d4a404;
+            color: var(--color-primario);
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+        }
+
+        #solucion-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        
+        /* --- Pie de Página --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #343a40;
+            color: var(--color-blanco);
+            margin-top: 2rem;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+
+    <header>
+        <h1>Cálculo Diferencial Paso a Paso</h1>
+        <p>
+            ¡Bienvenido! Soy <strong>Fernando Guevara</strong>, estudiante de la Facultad Multidisciplinaria de Occidente de la UES.
+            He creado este espacio como un recurso de apoyo para mis compañeros y docentes. Aquí encontrarás las guías de ejercicios de Cálculo Diferencial,
+            sus versiones resueltas y una herramienta para ver las soluciones detalladas.
+        </p>
+    </header>
+
+    <main>
+        <section id="descargas">
+            <h2>Descarga de Guías en PDF</h2>
+            <div class="guias-container">
+                
+                <div class="guia-card">
+                    <h3>Guía de Ejercicios #6</h3>
+                    <p>Contiene los problemas propuestos de la unidad sobre la Regla de la Cadena y Derivadas de Funciones Trascendentes.</p>
+                    <a href="GuiasDescargables/GUIA6(CALDIF2025).pdf" download class="btn">Descargar Ejercicios</a>
+                    <a href="GuiasDescargables/TEORÍA Y RESOLUCIÓN DE EJERCICIOS DE LA GUÍA 6 (CALDIF2025) (5).pdf" download class="btn resuelto">Descargar Resuelta</a>
+                </div>
+
+                <div class="guia-card">
+                    <h3>Guía de Ejercicios #7</h3>
+                    <p>Contiene los problemas propuestos sobre Derivadas de Orden Superior y Diferenciación Implícita.</p>
+                    <a href="GuiasDescargables/GUIA7(CALDIF2025).pdf" download class="btn">Descargar Ejercicios</a>
+                    <a href="GuiasDescargables/TEORÍA Y RESOLUCIÓN DE EJERCICIOS DE LA GUÍA 7 (CALDIF2025).pdf" download class="btn resuelto">Descargar Resuelta</a>
+                </div>
+
+                </div>
+        </section>
+
+        <section id="paso-a-paso">
+            <h2>Ejercicios Resueltos Paso a Paso</h2>
+            <p>Selecciona la guía y el número de ejercicio que deseas consultar. La solución detallada aparecerá abajo.</p>
+            
+            <div class="selector-container">
+                <label for="guia-select">Guía:</label>
+                <select id="guia-select">
+                    <option value="6">Guía 6: Regla de la Cadena</option>
+                    <option value="7">Guía 7: Derivadas de Orden Superior</option>
+                </select>
+
+                <label for="ejercicio-input">Ejercicio #:</label>
+                <input type="number" id="ejercicio-input" placeholder="Ej: 5" min="1">
+
+                <button onclick="mostrarSolucion()">Ver Solución</button>
+            </div>
+
+            <div id="solucion-container">
+                <p>Esperando selección...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto desarrollado por Fernando Guevara para la comunidad de la UES-FMOcc. ¡Éxitos en sus estudios!</p>
+    </footer>
+
+    <script>
+        // --- NOTA MUY IMPORTANTE, FERNANDO ---
+        // El siguiente código es una SIMULACIÓN para que la interfaz funcione visualmente.
+        // Para que esto sea real, necesitarás estructurar las soluciones de los ejercicios 
+        // en un formato que JavaScript pueda leer (como un objeto JSON).
+        // No es posible extraer mágicamente un solo ejercicio de un PDF con HTML/JS simple.
+
+        // Ejemplo de cómo deberías estructurar tus datos en el futuro:
+        const soluciones = {
+            "6": { // Guía 6
+                "1": "<h3>Solución Guía 6, Ejercicio 1: f(x) = (3x+1)⁴</h3><p><strong>Paso 1:</strong> Aplicar la Regla de la Cadena: n * u^(n-1) * u'.</p><p><strong>Paso 2:</strong> Identificamos u = 3x+1 y n = 4. La derivada de u es u' = 3.</p><p><strong>Paso 3:</strong> Sustituimos: f'(x) = 4 * (3x+1)³ * 3.</p><p><strong>Resultado:</strong> f'(x) = 12(3x+1)³.</p>",
+                "5": "<h3>Solución Guía 6, Ejercicio 5: f(x) = √(x² - 2x + 1)</h3><p><strong>Paso 1:</strong> Simplificar el radicando. x² - 2x + 1 es un trinomio cuadrado perfecto: (x-1)².</p><p><strong>Paso 2:</strong> La función es f(x) = √((x-1)²), que es f(x) = |x-1|.</p><p><strong>Paso 3:</strong> La derivada de |x-1| es (x-1)/|x-1|, o 1 si x>1 y -1 si x<1.</p>",
+                // ... Aquí irían todos los demás ejercicios de la guía 6
+            },
+            "7": { // Guía 7
+                "1": "<h3>Solución Guía 7, Ejercicio 1: Calcular f⁴(x) para f(x) = x⁵ - 3x³ + 8x - 5</h3><p>Se deriva sucesivamente 4 veces...</p><p><strong>f'(x):</strong> 5x⁴ - 9x² + 8</p><p><strong>f''(x):</strong> 20x³ - 18x</p><p><strong>f'''(x):</strong> 60x² - 18</p><p><strong>Resultado f⁴(x):</strong> 120x</p>",
+                // ... Aquí irían todos los demás ejercicios de la guía 7
+            }
+        };
+
+        function mostrarSolucion() {
+            const guiaSeleccionada = document.getElementById('guia-select').value;
+            const ejercicioSeleccionado = document.getElementById('ejercicio-input').value;
+            const contenedor = document.getElementById('solucion-container');
+
+            if (!ejercicioSeleccionado) {
+                contenedor.innerHTML = "<p style='color: red;'>Por favor, introduce un número de ejercicio.</p>";
+                return;
+            }
+
+            // Buscamos la solución en nuestro "diccionario" de soluciones
+            const solucionHTML = soluciones[guiaSeleccionada] && soluciones[guiaSeleccionada][ejercicioSeleccionado];
+
+            if (solucionHTML) {
+                contenedor.innerHTML = solucionHTML;
+            } else {
+                contenedor.innerHTML = `<p>Lo sentimos, la solución para el ejercicio <strong>#${ejercicioSeleccionado}</strong> de la <strong>Guía ${guiaSeleccionada}</strong> aún no está disponible o no existe.</p>`;
+            }
+        }
+    </script>
+
 </body>
-</html> 
+</html>
