@@ -23,7 +23,8 @@ export default async function handler(request, response) {
     // 4. Hacemos la llamada desde el servidor de Vercel a Wolfram|Alpha.
     const wolframResponse = await fetch(url);
     const data = await wolframResponse.json();
-
+    // ¡¡AÑADE ESTA LÍNEA PARA DEPURAR!!
+    console.log('Respuesta de Wolfram|Alpha:', JSON.stringify(data, null, 2));
     // 5. Devolvemos la respuesta al frontend (a tu index.html).
     response.status(200).json(data);
 
