@@ -266,6 +266,21 @@
                 <p>Esperando selección...</p>
             </div>
         </section>
+        <section id="calculadora-wolfram">
+            <h2>Calculadora Paso a Paso con Wolfram|Alpha</h2>
+            <p>Escribe cualquier problema de cálculo (en inglés, preferiblemente) para obtener una solución detallada. Por ejemplo: "derivative of x^4 * sin(x)" o "integrate 1/(x^2-1)".</p>
+            
+            <div class="selector-container">
+                <label for="problemaMatematico">Problema:</label>
+                <input type.text" id="problemaMatematico" placeholder="Escribe tu problema aquí..." style="flex-grow: 1;">
+
+                <button id="resolverBtn">Resolver</button>
+            </div>
+
+            <div id="solucion" style="margin-top: 2rem; padding: 1.5rem; background-color: #f9f9f9; border: 1px dashed #ccc; border-radius: 5px; min-height: 100px;">
+                <p>Esperando un problema para resolver...</p>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -325,6 +340,69 @@
         }
     }
 </script>
+<script>
+    const resolverBtn = document.getElementById('resolverBtn');
+    const problemaInput = document.getElementById('problemaMatematico');
+    const solucionDiv = document.getElementById('solucion');
 
+    resolverBtn.addEventListener('click', async () => {
+        const problema = problemaInput.value;
+        if (!problema) {
+            solucionDiv.innerHTML = "<p>Por favor, escribe un problema.</p>";
+            return;
+        }
+
+        solucionDiv.innerHTML = '<p>Consultando a Wolfram|Alpha...</p>';
+
+        try {
+            // ¡Esta es la llamada segura a tu intermediario en Vercel!
+            const response = await fetch('/api/resolver', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ problema: problema })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error del servidor: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            
+            // Procesando la respuesta de Wolfram|Alpha
+            if (data.queryresult.error || !data.queryresult.success) {
+                throw new Error('Wolfram|Alpha no pudo entender el problema.');
+            }
+
+            const pods = data.queryresult.pods;
+            let solucionHtml = '<h3>No se encontró una solución paso a paso.</h3>';
+            
+            const pasoAPaso = pods.find(pod => pod.id === 'Step-by-step solution');
+            const resultadoFinal = pods.find(pod => pod.id === 'Result');
+
+            if (pasoAPaso && pasoAPaso.subpods.length > 0) {
+                solucionHtml = `<h2>Solución Paso a Paso:</h2>`;
+                pasoAPaso.subpods.forEach(subpod => {
+                    solucionHtml += `<p>${subpod.plaintext}</p>`;
+                    if(subpod.img && subpod.img.src) {
+                        solucionHtml += `<img src="${subpod.img.src}" alt="Paso matemático" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 10px;">`;
+                    }
+                });
+            } else if (resultadoFinal) {
+                 solucionHtml = `<h2>Resultado:</h2><p>${resultadoFinal.subpods[0].plaintext}</p>`;
+                 if (resultadoFinal.subpods[0].img && resultadoFinal.subpods[0].img.src) {
+                    solucionHtml += `<img src="${resultadoFinal.subpods[0].img.src}" alt="Resultado matemático" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 10px;">`;
+                 }
+            }
+
+            solucionDiv.innerHTML = solucionHtml;
+
+        } catch (error) {
+            console.error('Error al llamar al backend:', error);
+            solucionDiv.innerHTML = `<p style="color: red;">Hubo un error al procesar tu petición. Revisa si el problema está bien escrito.</p>`;
+        }
+    });
+</script>
 </body>
 </html>
