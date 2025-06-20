@@ -355,7 +355,6 @@
         solucionDiv.innerHTML = '<p>Consultando a Wolfram|Alpha...</p>';
 
         try {
-            // ¡Esta es la llamada segura a tu intermediario en Vercel!
             const response = await fetch('/api/resolver', {
                 method: 'POST',
                 headers: {
@@ -365,19 +364,30 @@
             });
 
             if (!response.ok) {
-                throw new Error(`Error del servidor: ${response.statusText}`);
+                throw new Error(`Error de comunicación con el servidor: ${response.statusText}`);
             }
 
             const data = await response.json();
-            
-            // Procesando la respuesta de Wolfram|Alpha
-            if (data.queryresult.error || !data.queryresult.success) {
-                throw new Error('Wolfram|Alpha no pudo entender el problema.');
+
+            // --- LÓGICA DE PROCESAMIENTO MEJORADA ---
+
+            // 1. Revisamos primero si Wolfram|Alpha nos devolvió un error explícito.
+            if (data.queryresult.error) {
+                // Mostramos el mensaje de error que nos da la API
+                solucionDiv.innerHTML = `<p style="color: red;"><strong>Error de Wolfram|Alpha:</strong> ${data.queryresult.error.msg || 'No se pudo procesar la consulta.'}</p>`;
+                return;
             }
 
+            // 2. Revisamos si la consulta no fue exitosa o no tiene "pods" (bloques de resultado)
+            if (!data.queryresult.success || !data.queryresult.pods || data.queryresult.pods.length === 0) {
+                solucionDiv.innerHTML = `<p>Wolfram|Alpha no pudo encontrar una respuesta para esta consulta.</p>`;
+                return;
+            }
+
+            // 3. Si todo lo anterior pasó, procesamos y mostramos la solución.
             const pods = data.queryresult.pods;
             let solucionHtml = '<h3>No se encontró una solución paso a paso.</h3>';
-            
+
             const pasoAPaso = pods.find(pod => pod.id === 'Step-by-step solution');
             const resultadoFinal = pods.find(pod => pod.id === 'Result');
 
@@ -385,7 +395,7 @@
                 solucionHtml = `<h2>Solución Paso a Paso:</h2>`;
                 pasoAPaso.subpods.forEach(subpod => {
                     solucionHtml += `<p>${subpod.plaintext}</p>`;
-                    if(subpod.img && subpod.img.src) {
+                    if (subpod.img && subpod.img.src) {
                         solucionHtml += `<img src="${subpod.img.src}" alt="Paso matemático" style="max-width: 100%; height: auto; border: 1px solid #ccc; margin-top: 10px;">`;
                     }
                 });
@@ -399,8 +409,8 @@
             solucionDiv.innerHTML = solucionHtml;
 
         } catch (error) {
-            console.error('Error al llamar al backend:', error);
-            solucionDiv.innerHTML = `<p style="color: red;">Hubo un error al procesar tu petición. Revisa si el problema está bien escrito.</p>`;
+            console.error('Error en el script:', error);
+            solucionDiv.innerHTML = `<p style="color: red;">Hubo un error crítico al procesar tu petición. Revisa la consola del navegador para más detalles.</p>`;
         }
     });
 </script>
