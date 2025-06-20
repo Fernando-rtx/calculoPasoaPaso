@@ -307,69 +307,132 @@
     // Ahora está organizada por Guía, luego por Sección (a, b, c...), y finalmente por número de ejercicio.
 
     const soluciones = {
-        "1": { // Guía 1
-    "a": { // Sección A
-        "1": `<h3>Solución: Guía 1, Sección A, Ejercicio 1</h3>
-              <p><strong>Función dada:</strong> f(x) = x² - 1</p>
-              <p>A continuación, se evalúa la función para cada uno de los valores solicitados:</p>
-              <hr>
-              
-              <p><strong>1. Calcular f(-√3):</strong></p>
-              <p>Se sustituye x por -√3:</p>
-              <p>f(-√3) = (-√3)² - 1</p>
-              <p>f(-√3) = 3 - 1 = <strong>2</strong></p>
-              
-              <p><strong>2. Calcular f(3):</strong></p>
-              <p>Se sustituye x por 3:</p>
-              <p>f(3) = (3)² - 1</p>
-              <p>f(3) = 9 - 1 = <strong>8</strong></p>
-              
-              <p><strong>3. Calcular f(6):</strong></p>
-              <p>Se sustituye x por 6:</p>
-              <p>f(6) = (6)² - 1</p>
-              <p>f(6) = 36 - 1 = <strong>35</strong></p>
+    "1": { // Guía 1
+        "a": { // Sección A
+            "1": `<h3>Solución: Guía 1, Sección A, Ejercicio 1</h3>
+                  <p><strong>Función dada:</strong> f(x) = x² - 1</p>
+                  <p>Se evalúa la función para cada valor solicitado:</p>
+                  <hr>
+                  
+                  <p><strong>1. Calcular f(-√3):</strong> f(-√3) = (-√3)² - 1 = 3 - 1 = <strong>2</strong></p>
+                  <p><strong>2. Calcular f(3):</strong> f(3) = (3)² - 1 = 9 - 1 = <strong>8</strong></p>
+                  <p><strong>3. Calcular f(6):</strong> f(6) = (6)² - 1 = 36 - 1 = <strong>35</strong></p>
+                  <p><strong>4. Calcular f(a):</strong> f(a) = (a)² - 1 = <strong>a² - 1</strong></p>
+                  <p><strong>5. Calcular f(-a):</strong> f(-a) = (-a)² - 1 = <strong>a² - 1</strong></p>
+                  <p><strong>6. Calcular f(a+b):</strong> f(a+b) = (a+b)² - 1 = <strong>a² + 2ab + b² - 1</strong></p>
+                  <p><strong>7. Calcular f(-5):</strong> f(-5) = (-5)² - 1 = 25 - 1 = <strong>24</strong></p>
+                  `,
+            "2": `<h3>Solución: Guía 1, Sección A, Ejercicio 2</h3>
+                  <p><strong>Función dada:</strong> f(x) = -2x² + x</p>
+                  <p>Se evalúa la función para cada valor solicitado:</p>
+                  <hr>
 
-              <p><strong>4. Calcular f(a):</strong></p>
-              <p>Se sustituye x por 'a':</p>
-              <p>f(a) = (a)² - 1 = <strong>a² - 1</strong></p>
+                  <p><strong>1. Calcular f(-2):</strong> f(-2) = -2(-2)² + (-2) = -2(4) - 2 = -8 - 2 = <strong>-10</strong></p>
+                  <p><strong>2. Calcular f(π):</strong> f(π) = <strong>-2π² + π</strong></p>
+                  <p><strong>3. Calcular f(a):</strong> f(a) = <strong>-2a² + a</strong></p>
+                  <p><strong>4. Calcular f(a-1):</strong> f(a-1) = -2(a-1)² + (a-1) = -2(a² - 2a + 1) + a - 1 = -2a² + 4a - 2 + a - 1 = <strong>-2a² + 5a - 3</strong></p>
+                  <p><strong>5. Calcular f(-a):</strong> f(-a) = -2(-a)² + (-a) = -2a² - a = <strong>-2a² - a</strong></p>
+                  <p><strong>6. Calcular f(2):</strong> f(2) = -2(2)² + 2 = -2(4) + 2 = -8 + 2 = <strong>-6</strong></p>
+                  `,
+            "3": `<h3>Solución: Guía 1, Sección A, Ejercicio 3</h3>
+                  <p><strong>Función dada:</strong> f(x) = √x+1</p>
+                  <p>Se calculan las expresiones solicitadas:</p>
+                  <hr>
+                  
+                  <p><strong>1. Calcular f(2):</strong></p>
+                  <p>f(2) = √2+1 = <strong>√3</strong></p>
 
-              <p><strong>5. Calcular f(-a):</strong></p>
-              <p>Se sustituye x por '-a':</p>
-              <p>f(-a) = (-a)² - 1 = <strong>a² - 1</strong></p>
+                  <p><strong>2. Calcular f(2+h):</strong></p>
+                  <p>f(2+h) = √(2+h)+1 = <strong>√3+h</strong></p>
+                  
+                  <p><strong>3. Calcular (f(2+h) - f(2)) / h:</strong></p>
+                  <p>= (√3+h - √3) / h</p>
+                  <p>Esta es la expresión para el cociente diferencial. No se puede simplificar más sin racionalizar.</p>
+                  `,
+            "4": `<h3>Solución: Guía 1, Sección A, Ejercicio 4</h3>
+                  <p><strong>Función dada:</strong> f(x) = 5</p>
+                  <p>Esta es una función constante. Devuelve 5 sin importar el valor de entrada.</p>
+                  <hr>
+                  
+                  <p><strong>1. Calcular f(a):</strong> <strong>5</strong></p>
+                  <p><strong>2. Calcular f(a+h):</strong> <strong>5</strong></p>
+                  
+                  <p><strong>3. Calcular (f(a+h) - f(a)) / h:</strong></p>
+                  <p>= (5 - 5) / h = 0 / h = <strong>0</strong> (asumiendo h ≠ 0)</p>
+                  `,
+            "5": `<h3>Solución: Guía 1, Sección A, Ejercicio 5</h3>
+                  <p><strong>Función dada:</strong> f(x) = √2x+4</p>
+                  <p>Se calculan las expresiones solicitadas:</p>
+                  <hr>
+                  
+                  <p><strong>1. Calcular f(1/2):</strong></p>
+                  <p>f(1/2) = √2(1/2)+4 = √1+4 = <strong>√5</strong></p>
 
-              <p><strong>6. Calcular f(a+b):</strong></p>
-              <p>Se sustituye x por '(a+b)':</p>
-              <p>f(a+b) = (a+b)² - 1</p>
-              <p>f(a+b) = <strong>a² + 2ab + b² - 1</strong></p>
+                  <p><strong>2. Calcular f(1/2 + h):</strong></p>
+                  <p>f(1/2 + h) = √2(1/2 + h)+4 = √1+2h+4 = <strong>√5+2h</strong></p>
+                  
+                  <p><strong>3. Calcular (f(1/2 + h) - f(1/2)) / h:</strong></p>
+                  <p>= (√5+2h - √5) / h</p>
+                  <p>Esta es la expresión para el cociente diferencial.</p>
+                  `,
+            "6": `<h3>Solución: Guía 1, Sección A, Ejercicio 6</h3>
+                  <p><strong>Función dada:</strong> f(x) = 3x / (x² + 1)</p>
+                  <p>Se evalúa la función para cada valor solicitado:</p>
+                  <hr>
 
-              <p><strong>7. Calcular f(-5):</strong></p>
-              <p>Se sustituye x por -5:</p>
-              <p>f(-5) = (-5)² - 1</p>
-              <p>f(-5) = 25 - 1 = <strong>24</strong></p>
-              `
-    }
-            // ... aquí irían las demás secciones y ejercicios de la Guía 1
-        },
-        "5": { // Guía 5
-            "b": { // Sección B
-                "1": `<h3>Solución: Guía 5, Sección B, Ejercicio 1</h3>
+                  <p><strong>1. Calcular f(-1):</strong> f(-1) = 3(-1) / ((-1)² + 1) = -3 / 2 = <strong>-3/2</strong></p>
+                  <p><strong>2. Calcular f(0):</strong> f(0) = 3(0) / (0² + 1) = 0 / 1 = <strong>0</strong></p>
+                  <p><strong>3. Calcular f(1):</strong> f(1) = 3(1) / (1² + 1) = 3 / 2 = <strong>3/2</strong></p>
+                  <p><strong>4. Calcular f(√2):</strong> f(√2) = 3(√2) / ((√2)² + 1) = 3√2 / (2 + 1) = 3√2 / 3 = <strong>√2</strong></p>
+                  `,
+            "7": `<h3>Solución: Guía 1, Sección A, Ejercicio 7</h3>
+                  <p><strong>Función dada:</strong> f(x) = x / (x + 1)</p>
+                  <p>Se calculan las expresiones solicitadas:</p>
+                  <hr>
+
+                  <p><strong>1. Calcular f(1/4):</strong></p>
+                  <p>f(1/4) = (1/4) / (1/4 + 1) = (1/4) / (5/4) = <strong>1/5</strong></p>
+
+                  <p><strong>2. Calcular f(1/4 + h):</strong></p>
+                  <p>f(1/4 + h) = (1/4 + h) / (1/4 + h + 1) = <strong>( (1+4h)/4 ) / ( (5+4h)/4 ) = (1+4h)/(5+4h)</strong></p>
+                  
+                  <p><strong>3. Calcular (f(1/4 + h) - f(1/4)) / h:</strong></p>
+                  <p>Paso 1: [ (1+4h)/(5+4h) - 1/5 ] / h</p>
+                  <p>Paso 2 (Numerador): [ 5(1+4h) - 1(5+4h) ] / [ 5(5+4h) ] = [ 5 + 20h - 5 - 4h ] / [ 25 + 20h ] = 16h / (25 + 20h)</p>
+                  <p>Paso 3 (División por h): [ 16h / (25 + 20h) ] / h = <strong>16 / (25 + 20h)</strong></p>
+                  `
+        }
+        // Aquí irían las secciones b, c, etc. de la Guía 1
+    },
+    "2": { // Guía 2
+        // ...
+    },
+    "3": { // Guía 3
+        // ...
+    },
+    "4": { // Guía 4
+        // ...
+    },
+    "5": { // Guía 5
+        "b": { // Sección B
+            "1": `<h3>Solución: Guía 5, Sección B, Ejercicio 1</h3>
                       <p><strong>Función:</strong> f(x) = 20</p>
                       <p><strong>Derivada por definición:</strong> f'(x) = lim(h→0) [f(x+h) - f(x)] / h</p>
                       <p>f'(x) = lim(h→0) [20 - 20] / h = lim(h→0) 0 / h = 0</p>
                       <p><strong>Resultado:</strong> f'(x) = 0</p>`
-            }
-        },
-        "6": { // Guía 6
-            "a": { // Sección A
-                "1": `<h3>Solución: Guía 6, Sección A, Ejercicio 1</h3>
+        }
+    },
+    "6": { // Guía 6
+        "a": { // Sección A
+            "1": `<h3>Solución: Guía 6, Sección A, Ejercicio 1</h3>
                       <p><strong>Función:</strong> f(x) = (3x+1)⁴</p>
                       <p><strong>Regla de la Cadena:</strong> f'(x) = n * u^(n-1) * u'</p>
                       <p>u = 3x+1, u' = 3, n = 4</p>
                       <p><strong>Resultado:</strong> f'(x) = 4 * (3x+1)³ * 3 = 12(3x+1)³</p>`
-            }
         }
-        // ... y así sucesivamente con las demás guías y secciones
-    };
+    }
+    // ... y así sucesivamente con las demás guías y secciones
+};
 
     function mostrarSolucion() {
         const guiaSeleccionada = document.getElementById('guia-select').value;
