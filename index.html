@@ -245,17 +245,22 @@
             <p>Selecciona la guía y el número de ejercicio que deseas consultar. La solución detallada aparecerá abajo.</p>
             
             <div class="selector-container">
-                <label for="guia-select">Guía:</label>
-                <select id="guia-select">
-                    <option value="6">Guía 6: Regla de la Cadena</option>
-                    <option value="7">Guía 7: Derivadas de Orden Superior</option>
-                </select>
+    <label for="guia-select">Guía:</label>
+    <select id="guia-select">
+        <option value="1">Guía 1: Funciones y Límites</option>
+        <option value="2">Guía 2: La Definición de la Derivada</option>
+        <option value="3">Guía 3: Reglas Básicas de Derivación</option>
+        <option value="4">Guía 4: Reglas del Producto y Cociente</option>
+        <option value="5">Guía 5: Derivadas Trigonométricas</option>
+        <option value="6">Guía 6: Regla de la Cadena</option>
+        <option value="7">Guía 7: Derivadas de Orden Superior</option>
+    </select>
 
-                <label for="ejercicio-input">Ejercicio #:</label>
-                <input type="number" id="ejercicio-input" placeholder="Ej: 5" min="1">
+    <label for="ejercicio-input">Ejercicio #:</label>
+    <input type="number" id="ejercicio-input" placeholder="Ej: 5" min="1">
 
-                <button onclick="mostrarSolucion()">Ver Solución</button>
-            </div>
+    <button onclick="mostrarSolucion()">Ver Solución</button>
+</div>
 
             <div id="solucion-container">
                 <p>Esperando selección...</p>
@@ -269,45 +274,57 @@
     </footer>
 
     <script>
-        // --- NOTA MUY IMPORTANTE, FERNANDO ---
-        // El siguiente código es una SIMULACIÓN para que la interfaz funcione visualmente.
-        // Para que esto sea real, necesitarás estructurar las soluciones de los ejercicios 
-        // en un formato que JavaScript pueda leer (como un objeto JSON).
-        // No es posible extraer mágicamente un solo ejercicio de un PDF con HTML/JS simple.
+    // --- NOTA MUY IMPORTANTE, FERNANDO ---
+    // El siguiente código es una SIMULACIÓN. Para que sea real, necesitarás transcribir
+    // las soluciones de tus PDFs a este formato de texto.
 
-        // Ejemplo de cómo deberías estructurar tus datos en el futuro:
-        const soluciones = {
-            "6": { // Guía 6
-                "1": "<h3>Solución Guía 6, Ejercicio 1: f(x) = (3x+1)⁴</h3><p><strong>Paso 1:</strong> Aplicar la Regla de la Cadena: n * u^(n-1) * u'.</p><p><strong>Paso 2:</strong> Identificamos u = 3x+1 y n = 4. La derivada de u es u' = 3.</p><p><strong>Paso 3:</strong> Sustituimos: f'(x) = 4 * (3x+1)³ * 3.</p><p><strong>Resultado:</strong> f'(x) = 12(3x+1)³.</p>",
-                "5": "<h3>Solución Guía 6, Ejercicio 5: f(x) = √(x² - 2x + 1)</h3><p><strong>Paso 1:</strong> Simplificar el radicando. x² - 2x + 1 es un trinomio cuadrado perfecto: (x-1)².</p><p><strong>Paso 2:</strong> La función es f(x) = √((x-1)²), que es f(x) = |x-1|.</p><p><strong>Paso 3:</strong> La derivada de |x-1| es (x-1)/|x-1|, o 1 si x>1 y -1 si x<1.</p>",
-                // ... Aquí irían todos los demás ejercicios de la guía 6
-            },
-            "7": { // Guía 7
-                "1": "<h3>Solución Guía 7, Ejercicio 1: Calcular f⁴(x) para f(x) = x⁵ - 3x³ + 8x - 5</h3><p>Se deriva sucesivamente 4 veces...</p><p><strong>f'(x):</strong> 5x⁴ - 9x² + 8</p><p><strong>f''(x):</strong> 20x³ - 18x</p><p><strong>f'''(x):</strong> 60x² - 18</p><p><strong>Resultado f⁴(x):</strong> 120x</p>",
-                // ... Aquí irían todos los demás ejercicios de la guía 7
-            }
-        };
+    const soluciones = {
+        // === NUEVAS ENTRADAS (EJEMPLOS) ===
+        "1": { // Guía 1
+            "1": "<h3>Solución Guía 1, Ejercicio 1: Límite Básico</h3><p>Para resolver el límite de f(x) cuando x tiende a 'a', primero intentamos la sustitución directa...</p>"
+        },
+        "2": { // Guía 2
+            "1": "<h3>Solución Guía 2, Ejercicio 1: Derivada por Definición</h3><p><strong>Función:</strong> f(x) = x²</p><p><strong>Paso 1:</strong> Usamos la fórmula del límite: f'(x) = lim(h→0) [f(x+h) - f(x)] / h.</p><p><strong>Paso 2:</strong> Sustituimos f(x+h) = (x+h)² = x² + 2xh + h².</p><p><strong>Paso 3:</strong> f'(x) = lim(h→0) [x² + 2xh + h² - x²] / h = lim(h→0) [2xh + h²] / h.</p><p><strong>Paso 4:</strong> Factorizamos h: lim(h→0) h(2x + h) / h = lim(h→0) 2x + h.</p><p><strong>Resultado:</strong> Sustituimos h=0: f'(x) = 2x.</p>"
+        },
+        "3": { // Guía 3
+            "1": "<h3>Solución Guía 3, Ejercicio 1: Regla de la Potencia</h3><p><strong>Función:</strong> f(x) = 5x³ - 2x + 7</p><p><strong>Paso 1:</strong> Aplicamos la regla de la potencia (d/dx xⁿ = nxⁿ⁻¹) a cada término.</p><p><strong>Resultado:</strong> f'(x) = 15x² - 2.</p>"
+        },
+        "4": { // Guía 4
+            "1": "<h3>Solución Guía 4, Ejercicio 1: Regla del Producto</h3><p><strong>Función:</strong> f(x) = x * cos(x)</p><p><strong>Paso 1:</strong> Usamos la regla (uv)' = u'v + uv'. Aquí u=x, v=cos(x).</p><p><strong>Paso 2:</strong> Calculamos las derivadas: u'=1, v'=-sin(x).</p><p><strong>Resultado:</strong> f'(x) = (1)*cos(x) + (x)*(-sin(x)) = cos(x) - x*sin(x).</p>"
+        },
+        "5": { // Guía 5
+            "1": "<h3>Solución Guía 5, Ejercicio 1: Derivada de Tangente</h3><p><strong>Función:</strong> f(x) = tan(x)</p><p>La derivada directa de tan(x) es sec²(x).</p><p><strong>Resultado:</strong> f'(x) = sec²(x).</p>"
+        },
 
-        function mostrarSolucion() {
-            const guiaSeleccionada = document.getElementById('guia-select').value;
-            const ejercicioSeleccionado = document.getElementById('ejercicio-input').value;
-            const contenedor = document.getElementById('solucion-container');
-
-            if (!ejercicioSeleccionado) {
-                contenedor.innerHTML = "<p style='color: red;'>Por favor, introduce un número de ejercicio.</p>";
-                return;
-            }
-
-            // Buscamos la solución en nuestro "diccionario" de soluciones
-            const solucionHTML = soluciones[guiaSeleccionada] && soluciones[guiaSeleccionada][ejercicioSeleccionado];
-
-            if (solucionHTML) {
-                contenedor.innerHTML = solucionHTML;
-            } else {
-                contenedor.innerHTML = `<p>Lo sentimos, la solución para el ejercicio <strong>#${ejercicioSeleccionado}</strong> de la <strong>Guía ${guiaSeleccionada}</strong> aún no está disponible o no existe.</p>`;
-            }
+        // === GUÍAS QUE YA TENÍAMOS ===
+        "6": { // Guía 6
+            "1": "<h3>Solución Guía 6, Ejercicio 1: f(x) = (3x+1)⁴</h3><p><strong>Paso 1:</strong> Aplicar la Regla de la Cadena: n * u^(n-1) * u'.</p><p><strong>Paso 2:</strong> Identificamos u = 3x+1 y n = 4. La derivada de u es u' = 3.</p><p><strong>Paso 3:</strong> Sustituimos: f'(x) = 4 * (3x+1)³ * 3.</p><p><strong>Resultado:</strong> f'(x) = 12(3x+1)³.</p>",
+            "5": "<h3>Solución Guía 6, Ejercicio 5: f(x) = √(x² - 2x + 1)</h3><p><strong>Paso 1:</strong> Simplificar el radicando. x² - 2x + 1 es un trinomio cuadrado perfecto: (x-1)².</p><p><strong>Paso 2:</strong> La función es f(x) = √((x-1)²), que es f(x) = |x-1|.</p><p><strong>Paso 3:</strong> La derivada de |x-1| es (x-1)/|x-1|, o 1 si x>1 y -1 si x<1.</p>"
+        },
+        "7": { // Guía 7
+            "1": "<h3>Solución Guía 7, Ejercicio 1: Calcular f⁴(x) para f(x) = x⁵ - 3x³ + 8x - 5</h3><p>Se deriva sucesivamente 4 veces...</p><p><strong>f'(x):</strong> 5x⁴ - 9x² + 8</p><p><strong>f''(x):</strong> 20x³ - 18x</p><p><strong>f'''(x):</strong> 60x² - 18</p><p><strong>Resultado f⁴(x):</strong> 120x</p>"
         }
-    </script>
+    };
+
+    function mostrarSolucion() {
+        const guiaSeleccionada = document.getElementById('guia-select').value;
+        const ejercicioSeleccionado = document.getElementById('ejercicio-input').value;
+        const contenedor = document.getElementById('solucion-container');
+
+        if (!ejercicioSeleccionado) {
+            contenedor.innerHTML = "<p style='color: red;'>Por favor, introduce un número de ejercicio.</p>";
+            return;
+        }
+
+        const solucionHTML = soluciones[guiaSeleccionada] && soluciones[guiaSeleccionada][ejercicioSeleccionado];
+
+        if (solucionHTML) {
+            contenedor.innerHTML = solucionHTML;
+        } else {
+            contenedor.innerHTML = `<p>Lo sentimos, la solución para el ejercicio <strong>#${ejercicioSeleccionado}</strong> de la <strong>Guía ${guiaSeleccionada}</strong> aún no está disponible o no existe.</p>`;
+        }
+    }
+</script>
 
 </body>
 </html>
